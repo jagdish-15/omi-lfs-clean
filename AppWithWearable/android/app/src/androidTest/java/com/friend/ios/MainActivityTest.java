@@ -1,4 +1,4 @@
-package com.lumina.ios;
+package com.friend.ios;
 
 import androidx.test.rule.ActivityTestRule;
 import dev.flutter.plugins.integration_test.FlutterTestRunner;
