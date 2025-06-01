@@ -46,3 +46,29 @@ Some of the tickets are paid bounties! You can check which ones, but filtering w
 ### What if there are no paid bounties available?[​](#what-if-there-are-no-paid-bounties-available "Direct link to What if there are no paid bounties available?")
 
 If there are no paid bounties available, you can suggest your own. Simply filter by [open issues](https://github.com/BasedHardware/Omi/issues?q=is:open+is:issue+) with no "bounty" label and suggest your own bounty while pinging @ josancamon19 or @kodjima33
+
+## Cloning Repository Without Downloading All LFS Files
+
+Because some files tracked by Git LFS can be very large, cloning the full repo may take a long time or consume lots of bandwidth.
+
+To avoid downloading all large files immediately, you can clone the repository with only LFS pointer files (placeholders) using:
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/BasedHardware/Omi.git
+```
+
+Then, when you need the actual large files, run:
+
+```bash
+git lfs pull
+```
+
+To download **only specific large files or directories**, use:
+
+```bash
+git lfs pull -I "path/to/large/file1" -I "path/to/large/dir/*"
+```
+
+Replace `"path/to/large/file1"` and `"path/to/large/dir/*"` with the actual paths you want.
+
+This keeps your initial clone lightweight and lets you fetch only the LFS files you need.
